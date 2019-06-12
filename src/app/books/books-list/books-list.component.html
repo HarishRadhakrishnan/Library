@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="col-md-12 searchbox">
+    <div class="row">
+      <div class="col-md-12">
+        <label class="search">Search <i class="fas fa-search"></i>&nbsp;&nbsp;<input type="text" name="search" [(ngModel)]="searchText" placeholder="Search by book title..."/></label> 
+      </div>
+    </div>
+  </div>
+  <ul class="bklist">
+      <li *ngFor="let book of books | groupBy: 'category'">
+        <div class="bktitle">{{ book.key | uppercase }}</div>
+        <div class="thumbnailParent">
+          <div class="thumbnail" *ngFor="let l of book.value | searchBox:searchText">
+             <div (click)="selectedBook(l.id)">
+                <img  [src]="l.image">
+                <div class="thumbnailTitle">{{l.title}}</div>
+                <br>
+             </div>
+             <button *ngIf="userInfo.isAdmin" class="btn del btn-outline-secondary" (click)="deleteBookAdmin(l.id)">Delete</button>
+         </div>
+       </div>
+      </li>
+    </ul>
+  </div>
+  

@@ -1,0 +1,28 @@
+<div class="container login">
+  <h3>Admin</h3>
+  <div class="note">
+    <strong>Note : </strong><i>Username: admin@gmail.com and Password: admin123</i>
+  </div>
+  <form novalidate #loginForm="ngForm" (ngSubmit)="adminlogin(loginForm)">
+    <div class="form-group">
+      <label>Username</label>
+      <input class="form-control" #name="ngModel" required [class.is-invalid]="name.touched && name.invalid"
+      type="text" name="username" [(ngModel)]="username"/>
+      <small class="text-danger" [class.d-none]="name.untouched || name.valid">Username is required</small>
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input class="form-control" #pswd="ngModel" required [class.is-invalid]="pswd.touched && pswd.invalid"
+      type="password" name="password" [(ngModel)]="password"/>
+      <small class="text-danger" [class.d-none]="pswd.untouched || pswd.valid">Password is required</small>
+    </div>
+    <button class="btn btn-primary" type="submit" [disabled]="loginForm.form.invalid">Login</button>
+  </form>
+  <br>
+  <div *ngIf="errorMessage" class="alert alert-danger">{{ errorMessage }}</div>
+  <br>
+  <h3>User</h3>
+  <div class="form-group">
+    <button class="btn btn-success btn-block" (click)="googlelogin()">Login <i class="fab fa-google"></i></button>
+  </div>
+</div>

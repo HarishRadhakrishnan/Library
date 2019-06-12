@@ -1,0 +1,9 @@
+.login{
+    width: 500px;
+}
+.note{
+    padding: 6px;
+    border: 1px solid lightgrey;
+    border-radius: 6px;
+    background-color: lightseagreen;
+}

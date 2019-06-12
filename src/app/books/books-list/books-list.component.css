@@ -1,0 +1,26 @@
+.thumbnailParent{
+	display : flex;
+	cursor: pointer;
+}
+.thumbnail{
+	margin-right: 22px;
+}
+.bklist{
+	font-size: 16px;
+	list-style: none;
+}
+.bktitle{
+	font-weight: bold;
+}
+.searchbox{
+	margin-left: 27px;
+	margin-bottom: 20px;
+}
+.search{
+	font-size: 18px;
+	font-weight: bold;
+	margin-top: 2px;
+}
+.del{
+	width: 100%;
+}

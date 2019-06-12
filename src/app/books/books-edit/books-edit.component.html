@@ -1,0 +1,38 @@
+<div class="container" *ngIf="bookModel">
+  <h3>{{ pagetitle }}</h3>
+  <div *ngIf="userInfo.isAdmin && id==0">
+    <label>Enter book ISBN No. <strong>For ex: </strong>9781451648546</label>
+    <form class="form-inline" (ngSubmit)="isbnFun()">
+      <input class="form-control" [(ngModel)]="isbnValue" name="isbnValue">&nbsp;
+      <button class="btn btn-success" type="submit">Search</button>
+    </form>
+    <br>
+  </div>
+  <form novalidate #bookForm="ngForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label>Title</label>
+        <input type="text" #title="ngModel" required [class.is-invalid]="title.touched && title.invalid"
+        class="form-control" name="title" [(ngModel)]="bookModel.title"/>
+        <small class="text-danger" [class.d-none]="title.untouched || title.valid">Title is required</small>
+      </div>
+      <div class="form-group">
+        <label>Author</label>
+        <input type="text" #author="ngModel" required [class.is-invalid]="author.touched && author.invalid"
+        class="form-control" name="author" [(ngModel)]="bookModel.author"/>
+        <small class="text-danger" [class.d-none]="author.untouched || author.valid">Author is required</small>
+      </div>
+      <div class="form-group">
+        <label>Category</label>
+        <input type="text" #category="ngModel" required [class.is-invalid]="category.touched && category.invalid"
+        class="form-control" name="category" [(ngModel)]="bookModel.category"/>
+        <small class="text-danger" [class.d-none]="category.untouched || category.valid">Category is required</small>
+      </div>
+      <div class="form-group">
+        <label>Description</label>
+        <textarea #desc="ngModel" required [class.is-invalid]="desc.touched && desc.invalid"
+        class="form-control" name="description" [(ngModel)]="bookModel.description"></textarea>
+        <small class="text-danger" [class.d-none]="desc.untouched || desc.valid">Description is required</small>
+      </div>
+      <button type="submit" [disabled]="bookForm.form.invalid" class="btn btn-success">Submit</button>
+  </form>
+</div>

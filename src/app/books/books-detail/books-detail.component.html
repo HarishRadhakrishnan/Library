@@ -1,0 +1,29 @@
+<div *ngIf="book" class="container">
+  <h4>{{ book.title }}</h4>
+  <div class="row">
+    <div class="col-md-4">
+        <img class="thumbnail" src="{{book.image}}">
+    </div>
+    <div class="col-md-8 request">
+      <p>Books issued should be returned within 7 days from the date of issue.</p>
+      <button class="btn btn-primary" *ngIf="userInfo.loggedIn" (click)="requestBook(template)">Request</button>&nbsp;
+      <button *ngIf="userInfo.isAdmin" [routerLink]="['/books-list',book.id,'edit']" class="btn btn-primary">Edit</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <p>{{book.description}}</p>
+    </div>
+  </div>
+  <ng-template #template>
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Note to the User</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Please collect your book at the reception. Enjoy reading!
+      </div>
+    </ng-template>
+</div>
